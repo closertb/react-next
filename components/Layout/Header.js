@@ -10,7 +10,7 @@ export default function Header() {
         <span className="divide-line" />
         <div className="phone-box">
           <span>服务热线</span>
-          <span>186 2892 1913</span>
+          <span style={{ color: 'red' }}>186 2892 1913</span>
         </div>
       </div>
     </div>
