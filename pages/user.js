@@ -9,6 +9,9 @@ import { fields } from '../configs/fields';
 class Detail extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      visible: false
+    };
   }
   @bind
   handleChange(param) {
@@ -16,6 +19,10 @@ class Detail extends React.Component {
     console.log('param:', param);
     const nextSearch = { ...search, ...param };
     window.location.href = `/user?${qs.stringify(nextSearch)}`;
+  }
+  @bind
+  handleAction() {
+    this.setState({ visible: true });
   }
   getExtraFields() {
     const { actions: { onDelete } } = this.props;
@@ -36,7 +43,8 @@ class Detail extends React.Component {
     ];
   }
   render() {
-    const { actions, loading, datas, total, search, fields } = this.props;
+    const { loading, datas, total, search, fields } = this.props;
+    const { visible } = this.state;
     const tableProps = {
       search,
       datas,
@@ -48,8 +56,11 @@ class Detail extends React.Component {
     };
     return (
     <React.Fragment>
-      <Button type="primary" title="确认删除？" onClick={() => { console.log('click'); }}>
+      {visible && <Button type="primary" title="确认删除？" onClick={() => { console.log('click'); }}>
         删除
+      </Button>}
+      <Button type="primary" title="确认删除？" onClick={this.handleAction}>
+        show
       </Button>
       <EnhanceTable {...tableProps} />
     </React.Fragment>

@@ -9,8 +9,8 @@ export default function Header() {
   return (
     <div className="menu-box">
       {Object.keys(RouterTitle).map(item => (
-        <Link className="menu-item" href={item} key={item}>
-          <a style={linkStyle}>{RouterTitle[item]}</a>
+        <Link href={item} key={item}>
+          <a className="menu-item">{RouterTitle[item]}</a>
         </Link>
       ))}
     </div>
