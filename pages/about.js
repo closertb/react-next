@@ -1,3 +1,8 @@
+
+import Edit from '../components/Edit';
+
 export default () => (
-  <p>This is the about page</p>
+  <div>This is the about page
+    <Edit />
+  </div>
 )
