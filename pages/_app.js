@@ -1,8 +1,13 @@
 // /pages/_app.js
 
 import App, {Container} from 'next/app';
+import { Provider } from 'react-redux';
 import Layout from '../components/Layout';
 import { RouterTitle } from '../configs/constants';
+import createStore from '../store';
+// import { } from '../store/reducer';
+
+const store = createStore();
 
 export default class MyApp extends App {
  constructor(props) {
@@ -30,9 +35,11 @@ export default class MyApp extends App {
     
     return (
       <Container>
-        <Layout title={RouterTitle[router.pathname]}>
-          <Component {...pageProps} />
-        </Layout>
+        <Provider store={store}>
+          <Layout title={RouterTitle[router.pathname]}>
+            <Component {...pageProps} />
+          </Layout>
+        </Provider>
       </Container>
     );
   }

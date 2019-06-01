@@ -6,6 +6,15 @@ import { Button, Popconfirm, Table } from 'antd';
 import { EnhanceTable } from 'antd-doddle';
 import { fields } from '../configs/fields';
 
+const log = (target, name, descriptor) => {
+  var oldValue = descriptor.value;
+  descriptor.value = function() {
+    const newVlaue =  oldValue.apply(this, arguments);
+    return newVlaue;
+  };
+  return descriptor;
+}
+
 class Detail extends React.Component {
   constructor(props) {
     super(props);
@@ -23,6 +32,10 @@ class Detail extends React.Component {
   @bind
   handleAction() {
     this.setState({ visible: true });
+  }
+  @log
+  testLog(a= 10, b = 20) {
+    return a + b;
   }
   getExtraFields() {
     const { actions: { onDelete } } = this.props;
@@ -56,7 +69,7 @@ class Detail extends React.Component {
     };
     return (
     <React.Fragment>
-      {visible && <Button type="primary" title="确认删除？" onClick={() => { console.log('click'); }}>
+      {visible && <Button type="primary" title="确认删除？" onClick={() => { this.testLog(20, 30) }}>
         删除
       </Button>}
       <Button type="primary" title="确认删除？" onClick={this.handleAction}>
