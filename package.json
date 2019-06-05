@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "next",
-    "dev": "next start",
+    "start": "next && NODE_ENV=dev ",
+    "dev": "next start && NODE_ENV=dev",
     "build": "next build",
-    "prod": "npm run build && NODE_ENV=production node server.js"
+    "prod": "npm run build && NODE_ENV=production node server.js &"
   },
   "keywords": [],
   "author": "",

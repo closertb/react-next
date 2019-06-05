@@ -4,6 +4,7 @@ import qs from 'qs';
 import bind from 'bind-decorator';
 import { Button, Popconfirm, Table } from 'antd';
 import { EnhanceTable } from 'antd-doddle';
+import server from '../configs/server';
 import { fields } from '../configs/fields';
 
 const log = (target, name, descriptor) => {
@@ -85,7 +86,7 @@ Detail.getInitialProps = async function (props) {
   const { query = {} } = props;
   const { pn = 1, ps = 10 } = query;
   // console.log('query', query);
-  const res = await fetch(`http://localhost:8080/api/user/getList?pn=${pn}&ps=${ps}`, { method: 'GET' });
+  const res = await fetch(`${server.admin}/api/user/getList?pn=${pn}&ps=${ps}`, { method: 'GET' });
   const { content: { total = 0, list = [] } } =await res.json();
   return {
       search: {

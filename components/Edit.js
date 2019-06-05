@@ -12,7 +12,6 @@ export default class Edit extends React.Component {
   constructor(props) {
     super(props);
     const { form } = props;
-    console.log('form', form);
     this.state = {};
   }
   render() {
