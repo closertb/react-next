@@ -19,7 +19,7 @@
     "antd": "^3.16.6",
     "antd-doddle": "0.0.12",
     "babel-plugin-import": "^1.11.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "isomorphic-unfetch": "^3.0.0",
     "less": "^3.9.0",
     "moment": "^2.24.0",
